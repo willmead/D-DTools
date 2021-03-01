@@ -38,9 +38,12 @@ def create_beastiary():
     return beastiary
 
 
-beastiary = create_beastiary()
+def save_beastiary():
+    beastiary = create_beastiary()
+    with open("beastiary.pkl", 'wb') as f:
+        pickle.dump(beastiary, f, pickle.HIGHEST_PROTOCOL)
 
-with open("beastiary.pkl", 'wb') as f:
-    pickle.dump(beastiary, f, pickle.HIGHEST_PROTOCOL)
 
-print("Created Beastiary")
+def load_beastiary():
+    with open("beastiary.pkl", 'rb') as f:
+        return pickle.load(f)
